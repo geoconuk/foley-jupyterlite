@@ -32,6 +32,7 @@ jobs:
       - name: Build theory note (stable expanded reproduction)
         run: |
           pandoc stable_expanded_reproduction.md \
+            -f markdown+tex_math_single_backslash+tex_math_double_backslash \
             --standalone \
             --mathjax \
             --metadata title="Stable Expanded Reproduction" \

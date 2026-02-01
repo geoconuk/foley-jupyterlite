@@ -25,6 +25,17 @@ jobs:
         run: |
           cp README.md content
           jupyter lite build --contents content --output-dir dist
+      - name: Install pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+      - name: Build theory note (stable expanded reproduction)
+        run: |
+          pandoc stable_expanded_reproduction.md \
+            --standalone \
+            --mathjax \
+            --metadata title="Stable Expanded Reproduction" \
+            --output dist/stable_expanded_reproduction.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
